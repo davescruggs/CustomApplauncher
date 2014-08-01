@@ -1,0 +1,64 @@
+<apex:page controller="AppHelper"  sidebar="false" >
+    <apex:stylesheet value="{!URLFOR($Resource.applauncher__applauncher_css)}" />
+    <style>
+    #applaunchertitle
+    {
+        height:200px;
+        width:900px;
+        position:relative;
+    }
+    
+    #titleimage
+    {    
+        position:absolute;
+        left:0;
+        top:0;
+    }
+    #titletext
+    {
+        z-index:100;
+        position:absolute;    
+        color:white;
+        font-size:36px;
+        font-weight:bold;
+        left:100px;
+        top: 100px;
+        text-shadow: 2px 2px #000000;
+    }
+    </style>
+    <apex:messages />
+    <div id="apps">
+        <div id="appcenter">
+            <div id="applauncherheader">
+                <div id="applaunchertitle"  >
+                    <img src="https://lorempixel.com/900/200/city" id="titleimage" />
+                    <p id="titletext" >
+                        App Launcher - Hello {!$User.FirstName}
+                    </p>
+                </div> 
+            </div>
+            
+            <div id="appcontainer">
+                <apex:pageBlock >
+                    <apex:repeat value="{!apps}" var="a" id="theApps">
+                        <div>
+                            <apex:outputLink value="{!a.StartURL}">
+                                <div class="app">
+                                    <div class="tile-img">
+                                        <span class="tile-img-inner" style="max-width: 200px" >                                
+                                            <apex:image value="{!a.LogoURL}"/>
+                                        </span>
+                                    </div>
+                                    <div class="applabel">
+                                            <span>{!a.Label}</span>
+                                        </div>
+                                </div>
+                            </apex:outputLink>
+                        </div>
+                    </apex:repeat>
+                </apex:pageBlock>
+            </div>
+        </div>
+    </div>
+
+</apex:page>
